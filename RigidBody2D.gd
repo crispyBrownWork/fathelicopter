@@ -2,7 +2,7 @@ extends RigidBody2D
 
 
 @export var torque_strength: float = 3000.0  # Strength of the rotational force
-@export var return_torque: float = 1000.0  # Torque strength to return to upright position
+@export var return_torque: float = 250.0  # Torque strength to return to upright position
 @export var max_rotation_degrees: float = 180.0  # Maximum rotation limit
 @export var force_strength: float = 500.0 # Strength of the force applied
 
