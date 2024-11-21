@@ -1,23 +1,35 @@
 extends RigidBody2D
 
 
-# Speed of rotation when the player presses keys
-@export var rotation_speed: float = 100.0
-# Speed of rotation to return to upright position
-@export var return_speed: float = 200.0
+@export var torque_strength: float = 2000.0  # Strength of the rotational force
+@export var return_torque: float = 1000.0  # Torque strength to return to upright position
+@export var max_rotation_degrees: float = 180.0  # Maximum rotation limit
+@export var force_strength: float = 500.0 # Strength of the force applied
 
 func _process(delta: float) -> void:
-	# Get input for rotation
-	if Input.is_action_pressed("ui_left"):  # 'A' is bound to ui_left by default
-		rotation_degrees -= rotation_speed * delta
-	elif Input.is_action_pressed("ui_right"):  # 'D' is bound to ui_right by default
-		rotation_degrees += rotation_speed * delta
+	# Apply torque based on input
+	if Input.is_action_pressed("ui_left"):  # Rotate left
+		apply_torque_impulse(-torque_strength * delta)
+	elif Input.is_action_pressed("ui_right"):  # Rotate right
+		apply_torque_impulse(torque_strength * delta)
 	else:
-		# Return to upright position (90 degrees)
+		# Return to upright position
 		if rotation_degrees > 0:
-			rotation_degrees -= return_speed * delta
+			apply_torque_impulse(-return_torque * delta)
 		elif rotation_degrees < 0:
-			rotation_degrees += return_speed * delta
+			apply_torque_impulse(return_torque * delta)
+			
+	## Apply upward force
+	if Input.is_action_pressed("ui_up"):
+		# Calculate the upward direction relative to the rotation
+		var upward_direction = Vector2.UP.rotated(rotation)
+		# Apply the force in the upward direction
+		apply_central_force(upward_direction * force_strength)
 
-	# Clamp the rotation between 0 and 180 degrees
-	rotation_degrees = clamp(rotation_degrees, -90, 90)
+	# Clamp the rotation to stay within 0 and 180 degrees
+	#if rotation_degrees < 0.0:
+		#rotation_degrees = 0.0
+		#angular_velocity = 0.0  # Stop excessive torque at the boundary
+	#elif rotation_degrees > max_rotation_degrees:
+		#rotation_degrees = max_rotation_degrees
+		#angular_velocity = 0.0
