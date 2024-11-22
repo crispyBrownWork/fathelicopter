@@ -4,11 +4,11 @@ extends RigidBody2D
 @export var torque_strength: float = 3000.0  # Strength of the rotational force
 @export var return_torque: float = 250.0  # Torque strength to return to upright position
 @export var max_rotation_degrees: float = 180.0  # Maximum rotation limit
-@export var force_strength: float = 500.0 # Strength of the force applied
+@export var force_strength: float = 1500.0 # Strength of the force applied
 
 func _process(delta: float) -> void:
 	# Apply torque based on input
-	if Input.is_action_pressed("ui_left"):  # Rotate left
+	if Input.is_action_pressed("ui_left"):  # Rotwdwate left
 		apply_torque_impulse(-torque_strength * delta)
 	elif Input.is_action_pressed("ui_right"):  # Rotate right
 		apply_torque_impulse(torque_strength * delta)
