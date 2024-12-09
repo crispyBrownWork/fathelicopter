@@ -9,38 +9,46 @@ signal collision_occurred(impact_force: float, collision_point: Vector2)
 @export var linear_drag: float = 0.01  # Linear drag coefficient (0-1)
 @export var angular_drag: float = 0.01  # Angular drag coefficient (0-1)
 
+# Physics processing
 func _physics_process(delta: float) -> void:
-	# Apply drag to linear velocity
+	apply_drag()
+	handle_torque(delta)
+	return_to_upright(delta)
+	handle_force(delta)
+
+# Apply drag to linear and angular velocity
+func apply_drag() -> void:
 	linear_velocity = linear_velocity.lerp(Vector2.ZERO, linear_drag)
-	
-	# Apply drag to angular velocity
 	angular_velocity = lerp(angular_velocity, 0.0, angular_drag)
-	
-	# Apply torque based on input
+
+# Handle torque inputs
+func handle_torque(delta: float) -> void:
 	if Input.is_action_pressed("ui_left"):  # Rotate left
 		apply_torque_impulse(-torque_strength * delta)
 	elif Input.is_action_pressed("ui_right"):  # Rotate right
 		apply_torque_impulse(torque_strength * delta)
-	else:
-		# Return to upright position
-		if rotation_degrees > 0:
-			apply_torque_impulse(-return_torque * delta)
-		elif rotation_degrees < 0:
-			apply_torque_impulse(return_torque * delta)
-			
-	# Apply upward force
+
+# Return to upright position
+func return_to_upright(delta: float) -> void:
+	if rotation_degrees > 0:
+		apply_torque_impulse(-return_torque * delta)
+	elif rotation_degrees < 0:
+		apply_torque_impulse(return_torque * delta)
+
+# Handle upward force
+func handle_force(delta: float) -> void:
 	if Input.is_action_pressed("ui_up"):
-		# Calculate the upward direction relative to the rotation
 		var upward_direction = Vector2.UP.rotated(rotation)
-		# Apply the force in the upward direction
 		apply_central_force(upward_direction * force_strength * delta)
-		
+
+# Handle collision
 func _on_body_entered(body: Node, collision: KinematicCollision2D) -> void:
-	# Calculate impact force using mass and velocity
+	var impact_force = calculate_impact_force(body)
+	emit_signal("collision_occurred", impact_force, global_position)
+
+# Calculate impact force during collision
+func calculate_impact_force(body: Node) -> float:
 	var relative_velocity = linear_velocity
 	if body is RigidBody2D:
-		relative_velocity = linear_velocity - body.linear_velocity
-# F = ma, where 'a' is derived from the velocity change during collision
-	var impact_force = mass * relative_velocity.length()
-	
-	emit_signal("collision_occurred", impact_force, global_position)
+		relative_velocity -= body.linear_velocity
+	return mass * relative_velocity.length()

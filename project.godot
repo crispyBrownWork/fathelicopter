@@ -10,13 +10,14 @@ config_version=5
 
 [application]
 
-config/name="FatHelicopter"
+config/name="ClumsyCopter"
 run/main_scene="res://world_environment.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
+window/size/mode=2
 window/stretch/mode="viewport"
 
 [editor_plugins]
