@@ -24,6 +24,10 @@
 
 ### Export Instructions
 
+- I've pre exported the website folder in the web folder of the repository.
+
+#### IF THERE IS NO WEB FOLDER ALREADY
+
 - Switch the editor from the Forward + renderer to Compatibility at the top right
 
 - At the top editor menu, navigate to Editor -> Manage Export Templates
