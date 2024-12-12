@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://ch3mb06am8rf5"]
+[gd_scene load_steps=9 format=3 uid="uid://ch3mb06am8rf5"]
 
 [ext_resource type="Script" path="res://world_environment.gd" id="1_so6sr"]
 [ext_resource type="Texture2D" uid="uid://dmwpxef7cytkq" path="res://HelicopterSprite.png" id="1_umgt1"]
 [ext_resource type="PackedScene" uid="uid://bys515vctmbwe" path="res://terrain.tscn" id="2_0phas"]
+[ext_resource type="Script" path="res://timerUI.gd" id="5_3pa1q"]
+[ext_resource type="Script" path="res://timeLabel.gd" id="5_kckms"]
 [ext_resource type="Script" path="res://RigidBody2D.gd" id="11_k5bjk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rr4a7"]
@@ -46,3 +48,15 @@ drag_bottom_margin = 0.0
 
 [node name="UI" type="Node2D" parent="Player/Camera2D"]
 scale = Vector2(1e-05, 1e-05)
+script = ExtResource("5_3pa1q")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player/Camera2D/UI"]
+
+[node name="Label" type="Label" parent="Player/Camera2D/UI/CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(4.2, 4.2)
+text = "timer:"
+script = ExtResource("5_kckms")
+
+[connection signal="end" from="Terrain" to="." method="_on_terrain_end"]
