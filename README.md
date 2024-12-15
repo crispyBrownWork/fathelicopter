@@ -1,5 +1,7 @@
 ## Clumsy Copter
 
+![2024-12-13 13-58-46 1](https://github.com/user-attachments/assets/685dcd5b-3e3a-441d-91df-dfb31384a145)
+
 ### Setup
 
 - Download Godot 4.3: https://godotengine.org/download/archive/4.3-stable/
