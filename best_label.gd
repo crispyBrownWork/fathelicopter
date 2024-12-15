@@ -1,9 +1,11 @@
 extends Label
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	text = "Best:" + str(Global.best_time).pad_decimals(2)
+	if(Global.best_time == null):
+		text = "Best: TBD"
+	else:
+		text = "Best:" + str(Global.best_time).pad_decimals(2)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

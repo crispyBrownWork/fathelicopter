@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://ch3mb06am8rf5"]
+[gd_scene load_steps=11 format=3 uid="uid://ch3mb06am8rf5"]
 
 [ext_resource type="Script" path="res://world_environment.gd" id="1_so6sr"]
 [ext_resource type="Texture2D" uid="uid://dmwpxef7cytkq" path="res://HelicopterSprite.png" id="1_umgt1"]
 [ext_resource type="PackedScene" uid="uid://bys515vctmbwe" path="res://terrain.tscn" id="2_0phas"]
 [ext_resource type="Script" path="res://timerUI.gd" id="5_3pa1q"]
 [ext_resource type="Script" path="res://timeLabel.gd" id="5_kckms"]
+[ext_resource type="LabelSettings" uid="uid://dq8prhjsjis6g" path="res://TextSettings.tres" id="6_tb8r3"]
 [ext_resource type="Script" path="res://best_label.gd" id="7_tdnq7"]
 [ext_resource type="Script" path="res://RigidBody2D.gd" id="11_k5bjk"]
 
@@ -22,7 +23,7 @@ script = ExtResource("1_so6sr")
 [node name="Terrain" parent="." instance=ExtResource("2_0phas")]
 
 [node name="Player" type="RigidBody2D" parent="."]
-position = Vector2(323, 400)
+position = Vector2(420, 387)
 physics_material_override = SubResource("PhysicsMaterial_rr4a7")
 script = ExtResource("11_k5bjk")
 
@@ -54,18 +55,21 @@ script = ExtResource("5_3pa1q")
 [node name="CanvasLayer" type="CanvasLayer" parent="Player/Camera2D/UI"]
 
 [node name="Timer" type="Label" parent="Player/Camera2D/UI/CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
-scale = Vector2(4.2, 4.2)
+offset_left = 268.0
+offset_top = 440.0
+offset_right = 336.0
+offset_bottom = 462.0
 text = "Timer: "
+label_settings = ExtResource("6_tb8r3")
 script = ExtResource("5_kckms")
 
 [node name="Best" type="Label" parent="Player/Camera2D/UI/CanvasLayer"]
-offset_top = 84.0
-offset_right = 43.0
-offset_bottom = 109.0
-scale = Vector2(5, 4.16)
+offset_left = 273.0
+offset_top = 482.0
+offset_right = 2523.0
+offset_bottom = 982.0
 text = "Best: "
+label_settings = ExtResource("6_tb8r3")
 script = ExtResource("7_tdnq7")
 
 [connection signal="end" from="." to="Player/Camera2D/UI/CanvasLayer/Timer" method="_on_world_environment_end"]

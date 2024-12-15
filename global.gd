@@ -1,6 +1,6 @@
 extends Node
 
-var best_time = 0
+var best_time = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,5 +12,5 @@ func _process(delta: float) -> void:
 	pass
 
 func check_time(time):
-	if(time > best_time):
+	if(best_time == null || time < best_time):
 		best_time = time
