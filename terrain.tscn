@@ -6,10 +6,10 @@
 [ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point.gd" id="3_hqwh4"]
 [ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point_array.gd" id="4_yc11a"]
 [ext_resource type="Script" path="res://addons/rmsmartshape/materials/edge_material.gd" id="5_bv3iw"]
-[ext_resource type="Texture2D" uid="uid://bmy14b56rlh2p" path="res://RockEdge.png" id="6_lq4mv"]
 [ext_resource type="Script" path="res://addons/rmsmartshape/normal_range.gd" id="7_eeu0y"]
+[ext_resource type="Texture2D" uid="uid://dloa20qh6p5ko" path="res://rockEdgev2.png" id="8_g4c15"]
 [ext_resource type="Script" path="res://addons/rmsmartshape/materials/edge_material_metadata.gd" id="8_mrvl3"]
-[ext_resource type="Texture2D" uid="uid://byj8yci88g6j5" path="res://RockBase.png" id="9_wycrv"]
+[ext_resource type="Texture2D" uid="uid://4la644b2n1cf" path="res://rockFacev2.png" id="10_1nnbq"]
 [ext_resource type="Script" path="res://addons/rmsmartshape/materials/shape_material.gd" id="10_jjogi"]
 [ext_resource type="Script" path="res://addons/rmsmartshape/shapes/shape_render.gd" id="11_4wuwf"]
 
@@ -28,7 +28,7 @@ properties = SubResource("Resource_6ynlq")
 
 [sub_resource type="Resource" id="Resource_4mpxc"]
 script = ExtResource("2_m7saq")
-texture_idx = 0
+texture_idx = 3
 flip = false
 width = 1.0
 
@@ -54,7 +54,7 @@ properties = SubResource("Resource_6harp")
 
 [sub_resource type="Resource" id="Resource_on78m"]
 script = ExtResource("2_m7saq")
-texture_idx = 0
+texture_idx = -19
 flip = false
 width = 1.0
 
@@ -360,7 +360,7 @@ properties = SubResource("Resource_fuyr2")
 
 [sub_resource type="Resource" id="Resource_f5b51"]
 script = ExtResource("2_m7saq")
-texture_idx = 4
+texture_idx = 5
 flip = false
 width = 1.0
 
@@ -1065,7 +1065,7 @@ _point_order = PackedInt32Array(0, 1, 2, 3, 17, 4, 27, 44, 16, 31, 53, 39, 51, 5
 _constraints = {
 Vector2i(0, 7): 15
 }
-_next_key = 91
+_next_key = 92
 _material_overrides = {}
 tessellation_stages = 3
 tessellation_tolerance = 6.0
@@ -1073,7 +1073,7 @@ curve_bake_interval = 20.0
 
 [sub_resource type="Resource" id="Resource_t5xnc"]
 script = ExtResource("5_bv3iw")
-textures = Array[Texture2D]([ExtResource("6_lq4mv")])
+textures = Array[Texture2D]([ExtResource("8_g4c15")])
 textures_corner_outer = Array[Texture2D]([])
 textures_corner_inner = Array[Texture2D]([])
 textures_taper_left = Array[Texture2D]([])
@@ -1081,8 +1081,8 @@ textures_taper_right = Array[Texture2D]([])
 textures_taper_corner_left = Array[Texture2D]([])
 textures_taper_corner_right = Array[Texture2D]([])
 randomize_texture = false
-use_corner_texture = true
-use_taper_texture = true
+use_corner_texture = false
+use_taper_texture = false
 fit_mode = 0
 
 [sub_resource type="Resource" id="Resource_8u8j1"]
@@ -1100,12 +1100,12 @@ taper_sharp_corners = false
 render = true
 z_index = 0
 z_as_relative = true
-offset = 0.0
+offset = -0.9
 
 [sub_resource type="Resource" id="Resource_6tvc3"]
 script = ExtResource("10_jjogi")
 _edge_meta_materials = Array[ExtResource("8_mrvl3")]([SubResource("Resource_0k4bx")])
-fill_textures = Array[Texture2D]([ExtResource("9_wycrv")])
+fill_textures = Array[Texture2D]([ExtResource("10_1nnbq")])
 fill_texture_z_index = 0
 fill_texture_show_behind_parent = false
 fill_texture_scale = 3.0
@@ -1136,40 +1136,6 @@ shape_material = SubResource("Resource_6tvc3")
 collision_polygon_node_path = NodePath("../CollisionPolygon2D")
 
 [node name="_SS2D_RENDER" type="Node2D" parent="StaticBody2D/SS2D_Shape_Closed"]
-script = ExtResource("11_4wuwf")
-
-[node name="_Node2D_18380" type="Node2D" parent="StaticBody2D/SS2D_Shape_Closed/_SS2D_RENDER"]
-script = ExtResource("11_4wuwf")
-
-[node name="_Node2D_18381" type="Node2D" parent="StaticBody2D/SS2D_Shape_Closed/_SS2D_RENDER"]
-texture_repeat = 1
-script = ExtResource("11_4wuwf")
-
-[node name="_Node2D_18382" type="Node2D" parent="StaticBody2D/SS2D_Shape_Closed/_SS2D_RENDER"]
-script = ExtResource("11_4wuwf")
-
-[node name="_Node2D_18383" type="Node2D" parent="StaticBody2D/SS2D_Shape_Closed/_SS2D_RENDER"]
-texture_repeat = 1
-script = ExtResource("11_4wuwf")
-
-[node name="_Node2D_18384" type="Node2D" parent="StaticBody2D/SS2D_Shape_Closed/_SS2D_RENDER"]
-script = ExtResource("11_4wuwf")
-
-[node name="_Node2D_18385" type="Node2D" parent="StaticBody2D/SS2D_Shape_Closed/_SS2D_RENDER"]
-texture_repeat = 1
-script = ExtResource("11_4wuwf")
-
-[node name="_Node2D_18386" type="Node2D" parent="StaticBody2D/SS2D_Shape_Closed/_SS2D_RENDER"]
-script = ExtResource("11_4wuwf")
-
-[node name="_Node2D_18387" type="Node2D" parent="StaticBody2D/SS2D_Shape_Closed/_SS2D_RENDER"]
-texture_repeat = 1
-script = ExtResource("11_4wuwf")
-
-[node name="_Node2D_18388" type="Node2D" parent="StaticBody2D/SS2D_Shape_Closed/_SS2D_RENDER"]
-script = ExtResource("11_4wuwf")
-
-[node name="_Node2D_18389" type="Node2D" parent="StaticBody2D/SS2D_Shape_Closed/_SS2D_RENDER"]
 script = ExtResource("11_4wuwf")
 
 [node name="Area2D" type="Area2D" parent="."]

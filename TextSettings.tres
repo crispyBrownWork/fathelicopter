@@ -4,6 +4,7 @@
 
 [resource]
 font = ExtResource("1_tgsc3")
+font_size = 20
 font_color = Color(0.146297, 0.944534, 0, 1)
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)

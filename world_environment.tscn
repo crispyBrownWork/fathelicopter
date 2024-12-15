@@ -23,7 +23,7 @@ script = ExtResource("1_so6sr")
 [node name="Terrain" parent="." instance=ExtResource("2_0phas")]
 
 [node name="Player" type="RigidBody2D" parent="."]
-position = Vector2(420, 387)
+position = Vector2(412, 413)
 physics_material_override = SubResource("PhysicsMaterial_rr4a7")
 script = ExtResource("11_k5bjk")
 
