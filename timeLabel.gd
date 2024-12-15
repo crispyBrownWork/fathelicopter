@@ -8,7 +8,7 @@ var is_stopped := false
 func _process(delta: float) -> void:
 	if !is_stopped:
 		time_elapsed += delta
-		text = "timer: " + str(time_elapsed).pad_decimals(2)
+		text = "Timer: " + str(time_elapsed).pad_decimals(2)
 
 func reset() -> void:
 	# possibly save time_elapsed somewhere else before overriding it
@@ -17,3 +17,7 @@ func reset() -> void:
 
 func stop() -> void:
 	is_stopped = true
+
+
+func _on_world_environment_end() -> void:
+	Global.check_time(time_elapsed)

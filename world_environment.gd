@@ -1,5 +1,6 @@
 extends Node2D
 
+signal end()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,4 +17,5 @@ func reload_scnene() -> void:
 	pass
 	
 func _on_terrain_end() -> void:
+	emit_signal("end")
 	get_tree().reload_current_scene()
